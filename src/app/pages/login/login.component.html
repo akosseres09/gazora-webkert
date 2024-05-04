@@ -1,1 +1,34 @@
-<p>login works!</p>
+<div class="login-container">
+    <div class="credentials-container">
+        <form [formGroup]="loginForm" >
+        <h1 class="header">Login</h1>
+            <mat-form-field>
+                <mat-label for="email">Email:</mat-label>
+                <input matInput id="email" type="email" formControlName="email" >
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="password">Password:</mat-label>
+                <input matInput id="password" type="email" formControlName="password" >
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="rePw">Password Again:</mat-label>
+                <input matInput id="rePw" type="email" formControlName="rePassword" >
+            </mat-form-field>
+            <div>
+                <span class="button-holder">
+                    <button type="submit" mat-raised-button color="primary" (click)="login()">
+                        <span *ngIf="!loading">Login</span>
+                        <span *ngIf="loading">
+                            <span class="loader">
+                                <mat-progress-spinner color="secondary"></mat-progress-spinner>
+                            </span>
+                        </span>
+                    </button>
+                    <span>
+                        <button type="button" mat-raised-button color="primary" [routerLink]="'/signup'">Register</button>
+                    </span>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>

@@ -3,7 +3,7 @@
         <app-toolbar-menu></app-toolbar-menu>
     </mat-sidenav>
     <mat-sidenav-content>
-        <mat-toolbar color="secondary">
+        <mat-toolbar color="primary">
             <div class="hamburger-menu-wrapper">
                 <button mat-icon-button>
                     <mat-icon>menu</mat-icon>
@@ -18,11 +18,11 @@
                         <a routerLink="/signup">Register</a>
                     </li>
                     <li>
-                        <span>Logout</span>
+                        <a routerLink="/login">Logout</a>
                     </li>
                 </ul>
             </div>
         </mat-toolbar>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
-<router-outlet/>
