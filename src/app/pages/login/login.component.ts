@@ -18,10 +18,6 @@ export class LoginComponent implements OnDestroy{
         password: new FormControl('', [
             Validators.required,
             Validators.min(6),
-        ]),
-        rePassword: new FormControl('', [
-            Validators.required,
-            Validators.min(6)
         ])
     });
 

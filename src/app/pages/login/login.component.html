@@ -10,10 +10,6 @@
                 <mat-label for="password">Password:</mat-label>
                 <input matInput id="password" type="email" formControlName="password" >
             </mat-form-field>
-            <mat-form-field>
-                <mat-label for="rePw">Password Again:</mat-label>
-                <input matInput id="rePw" type="email" formControlName="rePassword" >
-            </mat-form-field>
             <div>
                 <span class="button-holder">
                     <button type="submit" mat-raised-button color="primary" (click)="login()">
@@ -24,6 +20,7 @@
                             </span>
                         </span>
                     </button>
+                    Or
                     <span>
                         <button type="button" mat-raised-button color="primary" [routerLink]="'/signup'">Register</button>
                     </span>
