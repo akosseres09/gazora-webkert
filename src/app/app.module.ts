@@ -7,7 +7,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-import { ToolbarMenuComponent } from './shared/toolbar-menu/toolbar-menu.component';
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
@@ -15,12 +14,13 @@ import { MatButtonModule } from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {AngularFireModule} from "@angular/fire/compat";
 import { MainGasComponent } from './pages/main-gas/main-gas.component';
+import { SidenavComponent } from './shared/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarMenuComponent,
     MainGasComponent,
+    SidenavComponent,
   ],
     imports: [
         BrowserModule,

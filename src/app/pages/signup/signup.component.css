@@ -15,10 +15,6 @@
     flex-direction: column;
 }
 
-.credentials-container form  button {
-    width: 100px;
-}
-
 .form-group {
     display: flex;
     flex-direction: column;
@@ -32,4 +28,28 @@
     justify-content: center;
     align-items: center;
     gap: 30px;
+}
+
+.credentials-container form .button-holder button {
+    flex: 1 1 50%;
+}
+
+@media screen and (max-width: 576px) {
+    .credentials-container form .button-holder {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .credentials-container form .button-holder button {
+        flex: unset;
+        width: 100%;
+    }
+
+    .login-container .credentials-container {
+        padding: 25px;
+    }
+
+    .credentials-container form {
+        padding: 15px 25px;
+    }
 }

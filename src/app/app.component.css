@@ -11,3 +11,22 @@
     text-decoration: none;
     color: white;
 }
+
+.custom-toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hamburger-menu-wrapper {
+    display: none;
+}
+
+@media screen and (max-width: 576px) {
+    .hamburger-menu-wrapper {
+        display: block;
+    }
+
+    .main-navigation .navigation-items {
+        display: none;
+    }
+}

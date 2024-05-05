@@ -1,20 +1,18 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav>
-        <app-toolbar-menu></app-toolbar-menu>
+        <app-sidenav (onSidenavClose)="onSidenavClose(true, sidenav)" [user]="user" (onLogout)="logout()"></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
-        <mat-toolbar color="primary">
-            <div class="hamburger-menu-wrapper">
-                <button mat-icon-button>
-                    <mat-icon>menu</mat-icon>
-                </button>
-            </div>
+        <mat-toolbar color="primary" class="custom-toolbar">
+            <span class="title">
+                MVM NEXT
+            </span>
             <div class="main-navigation">
                 <ul class="navigation-items">
-                    <li *ngIf="!user">
+                    <li *ngIf="!(user)">
                         <a routerLink="/">Login</a>
                     </li>
-                    <li *ngIf="!user">
+                    <li *ngIf="!(user)">
                         <a routerLink="/signup">Register</a>
                     </li>
                     <li *ngIf="user">
@@ -24,6 +22,11 @@
                         <a routerLink="/" (click)="logout()">Logout</a>
                     </li>
                 </ul>
+            </div>
+            <div class="hamburger-menu-wrapper" (click)="sidenav.toggle()">
+                <button mat-icon-button>
+                    <mat-icon>menu</mat-icon>
+                </button>
             </div>
         </mat-toolbar>
         <router-outlet></router-outlet>
