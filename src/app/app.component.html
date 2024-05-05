@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-    <mat-sidenav>
+    <mat-sidenav #sidenav>
         <app-toolbar-menu></app-toolbar-menu>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -11,14 +11,17 @@
             </div>
             <div class="main-navigation">
                 <ul class="navigation-items">
-                    <li>
-                        <a routerLink="/login">Login</a>
+                    <li *ngIf="!user">
+                        <a routerLink="/">Login</a>
                     </li>
-                    <li>
+                    <li *ngIf="!user">
                         <a routerLink="/signup">Register</a>
                     </li>
-                    <li>
-                        <a routerLink="/login">Logout</a>
+                    <li *ngIf="user">
+                        <a routerLink="/gas">Gas</a>
+                    </li>
+                    <li *ngIf="user">
+                        <a routerLink="/" (click)="logout()">Logout</a>
                     </li>
                 </ul>
             </div>

@@ -1,7 +1,7 @@
 <div class="signup-container">
     <div class="credentials-container">
         <form [formGroup]="signupForm" >
-            <h1 class="header">Login</h1>
+            <h1 class="header">Register</h1>
             <mat-form-field>
                 <mat-label for="email">Email:</mat-label>
                 <input matInput id="email" type="email" formControlName="email" >
@@ -9,17 +9,17 @@
             <div class="form-group" formGroupName="pw">
                 <mat-form-field>
                     <mat-label for="password">Password:</mat-label>
-                    <input matInput id="password" type="email" formControlName="password" >
+                    <input matInput id="password" type="password" formControlName="password" >
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label for="rePw">Password Again:</mat-label>
-                    <input matInput id="rePw" type="email" formControlName="rePassword" >
+                    <input matInput id="rePw" type="password" formControlName="rePassword" >
                 </mat-form-field>
             </div>
             <div>
                 <span class="button-holder">
                     <button type="submit" mat-raised-button color="primary" (click)="register()">
-                        <span *ngIf="!loading">Register</span>
+                        <span *ngIf="!loading">REGISTER</span>
                         <span *ngIf="loading">
                             <span class="loader">
                                 <mat-progress-spinner color="secondary"></mat-progress-spinner>
@@ -28,7 +28,7 @@
                     </button>
                     OR
                     <span>
-                        <button type="button" mat-raised-button color="primary" [routerLink]="'/login'">Login</button>
+                        <button type="button" mat-raised-button color="primary" [routerLink]="'/login'">LOGIN</button>
                     </span>
                 </span>
             </div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../shared/services/auth/auth.service";
+import {passWordCompareValidator} from "../../shared/validators/passWordCompareValidator";
 
 @Component({
   selector: 'app-signup',
@@ -20,9 +21,11 @@ export class SignupComponent {
             ]),
             rePassword: new FormControl('', [
                 Validators.required,
-                Validators.min(6)
+                Validators.min(6),
             ])
-        })
+        }, [
+            passWordCompareValidator('password', 'rePassword')
+        ])
     });
 
     loading: boolean = false;
