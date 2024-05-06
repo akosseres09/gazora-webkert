@@ -13,15 +13,23 @@ export class UserService {
             .doc(user.uid).set(user);
     }
 
-    read() {
-
+    findAll() {
+        return this.fireStore.collection<User>(this.USER_COLLECTION_NAME)
+            .valueChanges();
     }
 
-    update() {
-
+    findOne(uid: string) {
+        return this.fireStore.collection<User>(this.USER_COLLECTION_NAME)
+            .doc(uid).valueChanges();
     }
 
-    delete() {
+    update(user: User) {
+        this.fireStore.collection<User>(this.USER_COLLECTION_NAME)
+            .doc(user.uid).set(user);
+    }
 
+    delete(uid: string) {
+        this.fireStore.collection<User>(this.USER_COLLECTION_NAME)
+            .doc(uid).delete();
     }
 }

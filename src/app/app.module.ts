@@ -11,13 +11,13 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
-import {MatListModule} from "@angular/material/list";
-import {AngularFireModule} from "@angular/fire/compat";
+import { MatListModule } from "@angular/material/list";
+import { AngularFireModule } from "@angular/fire/compat";
 import { MainGasComponent } from './pages/main-gas/main-gas.component';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
-import {MainGasModule} from "./pages/main-gas/main-gas.module";
 import { ProfileComponent } from './pages/main-gas/profile/profile.component';
-import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatCardModule } from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -48,8 +48,8 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
         MatSidenavModule,
         MatButtonModule,
         MatListModule,
-        MainGasModule,
-        MatProgressSpinner
+        MatProgressSpinnerModule,
+        MatCardModule,
     ],
   providers: [
     provideAnimationsAsync()

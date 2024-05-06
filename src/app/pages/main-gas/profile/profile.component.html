@@ -1,1 +1,52 @@
-<p>profile works!</p>
+<div class="profile-container" >
+    <mat-card>
+        <mat-card-title *ngIf="user">
+            <span>Profile</span>
+        </mat-card-title>
+        <mat-card-content *ngIf="!user">
+            <span class="mini-loader"></span>
+        </mat-card-content>
+        <mat-card-content class="user-card" *ngIf="user">
+            <div class="name">
+                <h1>
+                    {{user.name?.first}}
+                    {{user.name?.last}}
+                </h1>
+            </div>
+            <div class="sub-user-info">
+                <div>
+                    <span class="attribute-name">
+                        Username:
+                    </span>
+                    <h1 class="attribute-value">
+                        {{user.username}}
+                    </h1>
+                </div>
+                <div>
+                    <span class="attribute-name">
+                        Email Address:
+                    </span>
+                    <h1 class="attribute-value">
+                        {{user.email}}
+                    </h1>
+                </div>
+            </div>
+            <div class="sub-user-info">
+                <div>
+                    <span class="attribute-name">
+                        Role:
+                    </span>
+                    <h1 class="attribute-value">
+                        {{userRole}}
+                    </h1>
+                </div>
+            </div>
+        </mat-card-content>
+        <div class="button-holder">
+            <button mat-flat-button color="primary" *ngIf="!user?.admin" (click)="toAdmin()">BECOME ADMIN</button>
+            <button mat-flat-button color="primary" *ngIf="user?.admin" (click)="toUser()">BECOME USER</button>
+            <button mat-flat-button color="primary" (click)="update()">UPDATE PROFILE</button>
+        </div>
+    </mat-card>
+</div>
+

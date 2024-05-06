@@ -6,7 +6,6 @@ import { MainComponent } from './main/main.component';
 import {MatListModule} from "@angular/material/list";
 import {MatIcon} from "@angular/material/icon";
 
-
 @NgModule({
     declarations: [
         MainComponent
@@ -18,7 +17,7 @@ import {MatIcon} from "@angular/material/icon";
         CommonModule,
         MainGasRoutingModule,
         MatListModule,
-        MatIcon
+        MatIcon,
     ]
 })
 export class MainGasModule { }

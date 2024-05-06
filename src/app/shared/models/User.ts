@@ -1,5 +1,9 @@
 export const ADMIN = true;
 export const USER = false;
+export const ROLES = {
+    'ADMIN': 'Admin',
+    'USER': 'User'
+}
 
 export interface User {
     uid: string

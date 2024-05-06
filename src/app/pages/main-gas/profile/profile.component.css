@@ -1,0 +1,97 @@
+.profile-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+mat-card {
+    position: absolute;
+    width: 35%;
+    padding: 25px 50px;
+}
+
+span.mini-loader {
+    position: relative;
+    bottom: 48%;
+    left: 48%;
+}
+
+.profile-container mat-card mat-card-title {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid white;
+}
+
+.profile-container mat-card mat-card-title span{
+    font-size: 2.5rem !important;
+    padding-bottom: 15px;
+}
+
+
+.sub-user-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.name {
+    align-self: center;
+}
+
+.button-holder {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.user-card .sub-user-info {
+    align-self: center;
+    gap: 100px;
+}
+
+.user-card .sub-user-info .attribute-name {
+    color: lightgrey;
+}
+
+@media screen and (max-width: 1250px) {
+    mat-card {
+        width: 60%;
+    }
+
+    .sub-user-info {
+        width: 100%;
+        display: block;
+    }
+
+    .sub-user-info div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .attribute-value {
+        margin-bottom: unset;
+    }
+
+    .button-holder {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .profile-container {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    mat-card {
+        width: 100%;
+    }
+}
