@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../shared/services/auth/auth.service";
 import {passWordCompareValidator} from "../../shared/validators/passWordCompareValidator";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -17,11 +18,11 @@ export class SignupComponent {
         pw: new FormGroup({
             password: new FormControl('', [
                 Validators.required,
-                Validators.min(6)
+                Validators.minLength(6)
             ]),
             rePassword: new FormControl('', [
                 Validators.required,
-                Validators.min(6),
+                Validators.minLength(6),
             ])
         }, [
             passWordCompareValidator('password', 'rePassword')
@@ -30,7 +31,7 @@ export class SignupComponent {
 
     loading: boolean = false;
 
-    constructor (private auth: AuthService) {
+    constructor (private router: Router,private auth: AuthService) {
     }
 
     register() {
@@ -44,7 +45,7 @@ export class SignupComponent {
 
         this.auth.signup(email.value as string, password.value as string)
             .then(userCred => {
-                console.log(userCred);
+                this.router.navigateByUrl('/')
             })
             .catch(err => {
                 console.error(err);

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {AuthService} from "./shared/services/auth/auth.service";
 import {MatSidenav} from "@angular/material/sidenav";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import {MatSidenav} from "@angular/material/sidenav";
 })
 export class AppComponent implements OnInit{
     title = 'MVM NEXT';
+    page: string = '';
 
     user?: firebase.default.User | null
     routes: Array<string> = new Array<string>();
@@ -19,6 +21,13 @@ export class AppComponent implements OnInit{
     ngOnInit() {
         this.routes = this.router.config.map(config => config.path) as Array<string>;
 
+        this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((evts: any) => {
+            const currentPage = (evts.urlAfterRedirects as string).split('/')[1] as string;
+            if (this.routes.includes(currentPage)) {
+                this.page = currentPage;
+            }
+        });
+
         this.auth.getUser().subscribe(user =>{
             this.user = user;
             if (user) {
@@ -26,6 +35,7 @@ export class AppComponent implements OnInit{
             }
         });
     }
+
 
     onSidenavClose(event: any, sidenav: MatSidenav) {
         if (event === true) {
@@ -36,7 +46,8 @@ export class AppComponent implements OnInit{
     logout() {
         this.auth.logout()
             .then(() => {
-                localStorage.removeItem('user');
+                localStorage.setItem('user', 'null');
+                this.router.navigateByUrl('/');
             })
             .catch(err => {
                 console.error(err);

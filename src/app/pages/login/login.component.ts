@@ -17,7 +17,7 @@ export class LoginComponent implements OnDestroy{
         ]),
         password: new FormControl('', [
             Validators.required,
-            Validators.min(6),
+            Validators.minLength(6),
         ])
     });
 
@@ -36,8 +36,9 @@ export class LoginComponent implements OnDestroy{
             return;
         }
 
-        this.auth.login(email?.value as string, password?.value as string)
-            .then(_ => {
+         this.auth.login(email?.value as string, password?.value as string)
+            .then(cred  => {
+                console.log(cred);
                 this.loading = false;
                 this.router.navigateByUrl('/gas');
             })

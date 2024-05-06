@@ -21,6 +21,10 @@
     display: none;
 }
 
+mat-sidenav {
+    width: 50%;
+}
+
 @media screen and (max-width: 576px) {
     .hamburger-menu-wrapper {
         display: block;

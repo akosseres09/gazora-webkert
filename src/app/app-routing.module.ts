@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {AngularFireAuthGuard} from "@angular/fire/compat/auth-guard";
+import {redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 import {authActivateGuard} from "./shared/guards/auth-activate.guard";
+
+const redirectUnauthorized = () => redirectUnauthorizedTo(['']);
+const redirectLoggedIn = () => redirectUnauthorizedTo(['/gas']);
 
 const routes: Routes = [
     {
@@ -16,7 +21,9 @@ const routes: Routes = [
     {
         path: 'gas',
         loadChildren: () => import('./pages/main-gas/main-gas.module').then(m => m.MainGasModule),
-        canActivate: [authActivateGuard]
+        canActivate: [AngularFireAuthGuard], data: {
+            authGuardPipe: redirectUnauthorized
+        }
     }
 ];
 

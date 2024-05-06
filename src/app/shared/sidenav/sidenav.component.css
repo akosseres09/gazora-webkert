@@ -1,0 +1,10 @@
+.sidenav-item-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+a.active {
+    color: red;
+}
