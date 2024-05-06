@@ -16,7 +16,10 @@
                         <a routerLink="/signup">Register</a>
                     </li>
                     <li *ngIf="user">
-                        <a routerLink="/gas">Gas</a>
+                        <a routerLink="/main">Main</a>
+                    </li>
+                    <li *ngIf="user">
+                        <a routerLink="/main/profile" >Profile</a>
                     </li>
                     <li *ngIf="user">
                         <a routerLink="/" (click)="logout()">Logout</a>

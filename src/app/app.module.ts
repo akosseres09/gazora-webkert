@@ -15,12 +15,16 @@ import {MatListModule} from "@angular/material/list";
 import {AngularFireModule} from "@angular/fire/compat";
 import { MainGasComponent } from './pages/main-gas/main-gas.component';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
+import {MainGasModule} from "./pages/main-gas/main-gas.module";
+import { ProfileComponent } from './pages/main-gas/profile/profile.component';
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
     AppComponent,
     MainGasComponent,
     SidenavComponent,
+    ProfileComponent,
   ],
     imports: [
         BrowserModule,
@@ -43,7 +47,9 @@ import { SidenavComponent } from './shared/sidenav/sidenav.component';
         MatToolbarModule,
         MatSidenavModule,
         MatButtonModule,
-        MatListModule
+        MatListModule,
+        MainGasModule,
+        MatProgressSpinner
     ],
   providers: [
     provideAnimationsAsync()

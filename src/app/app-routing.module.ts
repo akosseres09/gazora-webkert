@@ -19,12 +19,13 @@ const routes: Routes = [
         canActivate: [authActivateGuard]
     },
     {
-        path: 'gas',
+        path: 'main',
         loadChildren: () => import('./pages/main-gas/main-gas.module').then(m => m.MainGasModule),
-        canActivate: [AngularFireAuthGuard], data: {
+        canActivate: [AngularFireAuthGuard],
+        data: {
             authGuardPipe: redirectUnauthorized
         }
-    }
+    },
 ];
 
 @NgModule({

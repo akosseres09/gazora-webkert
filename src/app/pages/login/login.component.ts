@@ -40,7 +40,7 @@ export class LoginComponent implements OnDestroy{
             .then(cred  => {
                 console.log(cred);
                 this.loading = false;
-                this.router.navigateByUrl('/gas');
+                this.router.navigateByUrl('/main');
             })
             .catch(err => {
                 console.error(err.message);

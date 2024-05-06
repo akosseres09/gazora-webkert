@@ -12,11 +12,11 @@
             </mat-form-field>
             <div>
                 <span class="button-holder">
-                    <button type="submit" mat-raised-button color="primary" (click)="login()">
+                    <button  type="submit" mat-raised-button color="primary" (click)="login()">
                         <span *ngIf="!loading">LOGIN</span>
                         <span *ngIf="loading">
-                            <span class="loader">
-                                <mat-progress-spinner color="secondary"></mat-progress-spinner>
+                            <span class="loader backdrop">
+                                <mat-spinner color="accent"></mat-spinner>
                             </span>
                         </span>
                     </button>
