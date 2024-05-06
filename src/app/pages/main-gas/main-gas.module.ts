@@ -6,6 +6,10 @@ import { MainComponent } from './main/main.component';
 import {MatListModule} from "@angular/material/list";
 import {MatIcon} from "@angular/material/icon";
 import {MatDialogModule} from "@angular/material/dialog";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
+import {MatInput, MatInputModule} from "@angular/material/input";
+import {MatButton} from "@angular/material/button";
 
 @NgModule({
     declarations: [
@@ -18,7 +22,11 @@ import {MatDialogModule} from "@angular/material/dialog";
         CommonModule,
         MainGasRoutingModule,
         MatListModule,
-        MatIcon,
+        ReactiveFormsModule,
+        MatLabel,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButton
     ]
 })
 export class MainGasModule { }

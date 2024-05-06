@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {User} from "../../models/User";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {updateEmail} from "@angular/fire/auth";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +25,7 @@ export class UserService {
     }
 
     update(user: User) {
-        this.fireStore.collection<User>(this.USER_COLLECTION_NAME)
+        return this.fireStore.collection<User>(this.USER_COLLECTION_NAME)
             .doc(user.uid).set(user);
     }
 

@@ -4,6 +4,8 @@ import { UserService } from "../../../shared/services/user/user.service";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { DialogComponent } from "../../../shared/dialog/dialog/dialog.component";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {AddSheetComponent} from "../../../shared/sheet/add-sheet/add-sheet.component";
 
 @Component({
   selector: 'app-profile',
@@ -15,9 +17,8 @@ export class ProfileComponent implements OnInit{
     roles = ROLES;
     userRole?: string;
 
-    constructor(private userService: UserService, private snackBar: MatSnackBar, private dialog: MatDialog) {}
+    constructor(private userService: UserService, private snackBar: MatSnackBar, private dialog: MatDialog, private bottomSheet: MatBottomSheet) {}
     ngOnInit() {
-        console.log(this.roles)
         this.userService.findOne(localStorage.getItem('user') as string)
             .subscribe(user => {
                 this.user = user;
@@ -25,9 +26,10 @@ export class ProfileComponent implements OnInit{
             })
     }
 
-    openSnackbar() {
-        this.snackBar.open('Updated Profile!', 'Close', {
-            duration: 3000
+    openSnackbar(message: string, panel: Array<string> = []) {
+        this.snackBar.open(message, 'Close', {
+            duration: 3000,
+            panelClass: panel
         });
     }
 
@@ -45,21 +47,44 @@ export class ProfileComponent implements OnInit{
     toAdmin() {
         if (this.user) {
             this.user.admin = ADMIN;
-            this.userService.update(this.user);
-            this.openSnackbar();
+            this.userService.update(this.user).then(() => {
+                this.openSnackbar('Upgraded To Admin!');
+            }).catch(err => {
+                this.openSnackbar('Failed to Update Profile!', [
+                    'error'
+                ])
+                console.log(err)
+            });
         }
     }
 
     toUser() {
         if (this.user) {
             this.user.admin = USER;
-            this.userService.update(this.user);
-            this.openSnackbar();
+            this.userService.update(this.user)
+                .then(() => {
+                    this.openSnackbar('Demoted to User!');
+                })
+                .catch(err => {
+                    this.openSnackbar('Failed To Update Profile!', [
+                        'error'
+                    ]);
+                    console.log(err)
+                });
         }
     }
 
     update(user: User) {
-        this.userService.update(user);
         this.dialog.closeAll();
+        this.userService.update(user).then(() => {
+            this.openSnackbar('Updated Profile!', [
+                'error'
+            ]);
+        }).catch(err => {
+            this.openSnackbar('Failed To Update Profile!', [
+                'error'
+            ])
+            console.error(err)
+        });
     }
 }

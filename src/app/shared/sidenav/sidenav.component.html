@@ -11,10 +11,16 @@
             <span>Register</span>
         </div>
     </a>
-    <a mat-list-item routerLink="/gas" (click)="close()" *ngIf="user">
+    <a mat-list-item routerLink="/main" (click)="close()" *ngIf="user">
         <div class="sidenav-item-container">
             <mat-icon>grid_view</mat-icon>
             <span>Gas</span>
+        </div>
+    </a>
+    <a mat-list-item routerLink="/main/profile" (click)="close()" *ngIf="user">
+        <div class="sidenav-item-container">
+            <mat-icon>person</mat-icon>
+            <span>Profile</span>
         </div>
     </a>
     <a mat-list-item routerLink="/" (click)="close(true)" *ngIf="user">

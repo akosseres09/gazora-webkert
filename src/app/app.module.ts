@@ -23,6 +23,9 @@ import { DialogComponent } from './shared/dialog/dialog/dialog.component';
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MainGasModule} from "./pages/main-gas/main-gas.module";
+import { AddSheetComponent } from './shared/sheet/add-sheet/add-sheet.component';
+import {MatLine} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     SidenavComponent,
     ProfileComponent,
     DialogComponent,
+    AddSheetComponent,
   ],
     imports: [
         BrowserModule,
@@ -65,6 +69,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         MatInput,
         FormsModule,
         ReactiveFormsModule,
+        MainGasModule,
+        MatLine,
     ],
   providers: [
     provideAnimationsAsync()

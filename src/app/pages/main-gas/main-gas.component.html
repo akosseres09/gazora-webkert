@@ -1,5 +1,11 @@
 <div class="main-gas-container">
-    <div *ngIf="loading" class="loader">
+    <div *ngIf="false" class="loader">
         <mat-spinner color="accent"></mat-spinner>
     </div>
 </div>
+
+<app-main></app-main>
+
+<button mat-mini-fab (click)="openBottomSheet()">
+    <mat-icon>add</mat-icon>
+</button>
