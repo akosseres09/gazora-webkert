@@ -1,6 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {ROLES, User} from "../../../shared/models/User";
-import {UserService} from "../../../shared/services/user/user.service";
+import { Component, OnInit } from '@angular/core';
+import { ADMIN, ROLES, USER, User } from "../../../shared/models/User";
+import { UserService } from "../../../shared/services/user/user.service";
+import { MatDialog } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { DialogComponent } from "../../../shared/dialog/dialog/dialog.component";
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +15,7 @@ export class ProfileComponent implements OnInit{
     roles = ROLES;
     userRole?: string;
 
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService, private snackBar: MatSnackBar, private dialog: MatDialog) {}
     ngOnInit() {
         console.log(this.roles)
         this.userService.findOne(localStorage.getItem('user') as string)
@@ -22,14 +25,41 @@ export class ProfileComponent implements OnInit{
             })
     }
 
+    openSnackbar() {
+        this.snackBar.open('Updated Profile!', 'Close', {
+            duration: 3000
+        });
+    }
+
+    openDialog() {
+        return this.dialog.open(DialogComponent, {
+            width: 'fill-content',
+            data: {
+                dialog: this.dialog,
+                profileComponent: this,
+                user: this.user,
+            }
+        });
+    }
+
     toAdmin() {
+        if (this.user) {
+            this.user.admin = ADMIN;
+            this.userService.update(this.user);
+            this.openSnackbar();
+        }
     }
 
     toUser() {
-
+        if (this.user) {
+            this.user.admin = USER;
+            this.userService.update(this.user);
+            this.openSnackbar();
+        }
     }
 
-    update() {
-
+    update(user: User) {
+        this.userService.update(user);
+        this.dialog.closeAll();
     }
 }

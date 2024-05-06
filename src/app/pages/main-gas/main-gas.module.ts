@@ -5,6 +5,7 @@ import { MainGasRoutingModule } from './main-gas-routing.module';
 import { MainComponent } from './main/main.component';
 import {MatListModule} from "@angular/material/list";
 import {MatIcon} from "@angular/material/icon";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
     declarations: [

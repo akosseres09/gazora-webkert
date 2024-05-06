@@ -56,6 +56,10 @@ span.mini-loader {
     gap: 100px;
 }
 
+mat-card-content {
+    padding: unset;
+}
+
 .user-card .sub-user-info .attribute-name {
     color: lightgrey;
 }
