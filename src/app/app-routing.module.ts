@@ -5,7 +5,7 @@ import {redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 import {authActivateGuard} from "./shared/guards/auth-activate.guard";
 
 const redirectUnauthorized = () => redirectUnauthorizedTo(['']);
-const redirectLoggedIn = () => redirectUnauthorizedTo(['/gas']);
+const redirectLoggedIn = () => redirectUnauthorizedTo(['/main']);
 
 const routes: Routes = [
     {

@@ -47,7 +47,7 @@ export class AppComponent implements OnInit{
         this.auth.logout()
             .then(() => {
                 localStorage.setItem('user', 'null');
-                this.router.navigateByUrl('/');
+                this.router.navigate(['/']);
             })
             .catch(err => {
                 console.error(err);

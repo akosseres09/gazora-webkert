@@ -7,6 +7,6 @@ export const  authActivateGuard: CanActivateFn = async (route, state) => {
     if (user === null || user === 'null') {
         return true;
     } else {
-        return router.createUrlTree(['/gas'])
+        return router.createUrlTree(['/main'])
     }
 };
