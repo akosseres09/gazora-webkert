@@ -11,12 +11,12 @@ export class AddressService {
     constructor(private firestore: AngularFirestore) { }
 
     create(address: Address) {
-        this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME)
+        return this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME)
             .doc().set(address);
     }
 
     findAllToUid(uid: string) {
-        this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME)
+        return this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME)
             .valueChanges();
     }
 

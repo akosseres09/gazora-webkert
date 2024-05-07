@@ -1,1 +1,46 @@
-<p>add-address works!</p>
+<div class="form-container">
+    <h1>Add New Address</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group-container">
+            <mat-form-field>
+                <mat-label for="country">Country:</mat-label>
+                <input matInput id="country" placeholder="Hungary" type="text" formControlName="country">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="state">State:</mat-label>
+                <input matInput id="state" type="text" placeholder="Csongrád" formControlName="state">
+            </mat-form-field>
+        </div>
+        <div class="form-group-container">
+            <mat-form-field>
+                <mat-label for="city">City:</mat-label>
+                <input matInput id="city" placeholder="Szeged" type="text" formControlName="city">
+            </mat-form-field>
+        </div>
+        <div class="form-group-container">
+            <mat-form-field>
+                <mat-label for="street">Street:</mat-label>
+                <input matInput id="street" placeholder="Tisza Lajos krt." type="text" formControlName="street">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="house">House:</mat-label>
+                <input matInput id="house" placeholder="103." type="text" formControlName="houseNumber">
+            </mat-form-field>
+        </div>
+        <div class="form-group-container">
+            <mat-form-field>
+                <mat-label for="floor">Floor:</mat-label>
+                <input matInput id="floor" placeholder="2." type="text" formControlName="floor">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="doorNumber">Door:</mat-label>
+                <input matInput id="doorNumber" placeholder="11" type="text" formControlName="doorNumber">
+            </mat-form-field>
+        </div>
+
+        <div class="button-holder">
+            <button mat-flat-button color="primary">ADD</button>
+            <button type="button" mat-flat-button color="accent" (click)="goBack()">BACK</button>
+        </div>
+    </form>
+</div>

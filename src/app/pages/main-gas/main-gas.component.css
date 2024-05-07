@@ -1,3 +1,13 @@
 mat-sidenav {
     width: 15%;
 }
+
+.main-container {
+    position: relative;
+}
+
+.add-button {
+    position: absolute;
+    bottom: 5%;
+    right: 3%;
+}

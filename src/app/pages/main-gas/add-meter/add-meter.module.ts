@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AddMeterRoutingModule } from './add-meter-routing.module';
+import {AddMeterComponent} from "./add-meter.component";
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+      AddMeterComponent
+  ],
   imports: [
     CommonModule,
     AddMeterRoutingModule
