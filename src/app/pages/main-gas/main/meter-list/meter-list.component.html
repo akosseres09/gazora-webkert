@@ -1,0 +1,44 @@
+<div class="gas-meter-container">
+    <h1 class="mat-headline-4">Your Meters:</h1>
+    <mat-accordion>
+        <mat-expansion-panel #panel class="meter-not-found" hideToggle="true" (opened)="panel.close()"  *ngIf="(meters && meters.length === 0)">
+            <mat-expansion-panel-header expandedHeight="{{expansionHeight}}" collapsedHeight="{{expansionHeight}}" >
+                No Result Found!
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <mat-expansion-panel *ngIf="!meters">
+            <mat-expansion-panel-header expandedHeight="{{expansionHeight}}" collapsedHeight="{{expansionHeight}}">
+                <div class="loader-container">
+                    <span class="mini-loader"></span>
+                </div>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <div *ngIf="meters && meters.length > 0">
+            <mat-expansion-panel *ngFor="let meter of meters" style="margin-bottom: 10px">
+                <mat-expansion-panel-header collapsedHeight="{{expansionHeight}}" expandedHeight="{{expansionHeight}}" >
+                    <mat-panel-title>
+                        {{meter.name}}
+                    </mat-panel-title>
+                    <mat-panel-description style="display: flex; align-items: center; gap: 15px">
+                        Current position: <span class="bold">{{meter.currentPosition}} m3</span>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-divider></mat-divider>
+                <div class="meter-detail-container">
+                    <div class="data">
+                        <span class="attribute-header">
+                            Registered at:
+                        </span>
+                        <span class="attribute-value">
+                            {{meter.date.toDate().toLocaleString()}}
+                        </span>
+                    </div>
+                    <div class="data icon-holder" *ngIf="meter.id">
+                        <mat-icon (click)="delete(meter.id)">delete</mat-icon>
+                        <mat-icon (click)="openDialog(meter.id)">edit</mat-icon>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </div>
+    </mat-accordion>
+</div>

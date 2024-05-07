@@ -1,0 +1,41 @@
+<div class="address-container">
+    <h1 class="mat-headline-4">Your Addresses:</h1>
+    <mat-accordion>
+        <mat-expansion-panel #addressPanel class="address-not-found" hideToggle="true" (opened)="addressPanel.close()"  *ngIf="(addresses && addresses.length === 0)">
+            <mat-expansion-panel-header expandedHeight="{{expansionHeight}}" collapsedHeight="{{expansionHeight}}">
+                No Result Found!
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <mat-expansion-panel *ngIf="!addresses">
+            <mat-expansion-panel-header expandedHeight="{{expansionHeight}}" collapsedHeight="{{expansionHeight}}">
+                <div class="loader-container">
+                    <span class="mini-loader"></span>
+                </div>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <div *ngIf="addresses && addresses.length > 0">
+            <mat-expansion-panel *ngFor="let address of addresses" style="margin-bottom: 10px">
+                <mat-expansion-panel-header collapsedHeight="{{expansionHeight}}" expandedHeight="{{expansionHeight}}" >
+                    <mat-panel-title>
+                        {{address.city}}, {{address.street}} {{address.houseNumber}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-divider></mat-divider>
+                <div class="address-detail-container">
+                    <div class="data">
+                        <span class="attribute-header">
+                            Registered at:
+                        </span>
+                        <span class="attribute-value">
+                            {{address.date.toDate().toLocaleString()}}
+                        </span>
+                    </div>
+                    <div class="data icon-holder" *ngIf="address.id">
+                        <mat-icon (click)="delete(address.id)">delete</mat-icon>
+                        <mat-icon (click)="openDialog(address.id)">edit</mat-icon>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </div>
+    </mat-accordion>
+</div>

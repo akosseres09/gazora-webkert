@@ -1,0 +1,74 @@
+:host {
+    display: block;
+}
+
+.gas-meter-container {
+    width: 75%;
+    margin: 30px auto;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+mat-expansion-panel-header {
+    font-size: 26px;
+}
+
+mat-expansion-panel-header mat-panel-description {
+    font-size: 20px;
+}
+
+::ng-deep .mat-expansion-panel-header span {
+    overflow: visible !important;
+}
+
+.mat-headline-4 {
+    margin-bottom: 15px !important;
+}
+
+.loader-container {
+    margin: 0 auto;
+}
+
+.meter-detail-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.meter-detail-container .data {
+    font-size: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.meter-detail-container .data:not(.icon-holder) {
+    flex-direction: column;
+}
+
+.meter-detail-container .data.icon-holder {
+    align-items: center;
+}
+
+.meter-detail-container .data .attribute-header {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 772px) {
+    .gas-meter-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    mat-panel-description {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 380px){
+    .meter-detail-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
