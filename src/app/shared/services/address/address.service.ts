@@ -31,4 +31,9 @@ export class AddressService {
         return this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME)
             .valueChanges();
     }
+
+    update(address: Address) {
+        return this.firestore.collection(this.ADDRESS_COLLECTION_NAME)
+            .doc(address.id).set(address);
+    }
 }

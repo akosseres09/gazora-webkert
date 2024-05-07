@@ -1,9 +1,10 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Address} from "../../../../shared/models/Address";
 import {AddressService} from "../../../../shared/services/address/address.service";
 import {SnackbarService} from "../../../../shared/services/snackbar/snackbar.service";
 import {DialogService} from "../../../../shared/services/dialog/dialog.service";
 import {AddressDialogComponent} from "../../../../shared/dialog/address-dialog/address-dialog.component";
+import {GasMeter} from "../../../../shared/models/gasMeter";
 
 @Component({
   selector: 'app-address-list',
@@ -12,16 +13,21 @@ import {AddressDialogComponent} from "../../../../shared/dialog/address-dialog/a
 })
 export class AddressListComponent {
     @Input() addresses?: Array<Address>;
+    @Input() meters?: Array<GasMeter>;
     @Input() expansionHeight?: string;
 
     constructor(private adService: AddressService, private snackBar: SnackbarService, private dialog: DialogService) {}
 
-    delete(id: string) {
-
-    }
-
-    edit(id: string) {
-
+    edit(address: Address) {
+        this.dialog.closeAll();
+        this.adService.update(address).then(() => {
+            this.snackBar.openSnackbar('Address Edited!');
+        }).catch(err => {
+            console.error(err);
+            this.snackBar.openSnackbar('Failed To Edit Address!', [
+                'error'
+            ]);
+        });
     }
 
     openDialog(id: string) {
@@ -36,5 +42,4 @@ export class AddressListComponent {
             component: this
         }, AddressDialogComponent);
     }
-
 }
