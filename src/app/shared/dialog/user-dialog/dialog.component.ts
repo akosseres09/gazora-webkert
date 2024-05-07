@@ -5,7 +5,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProfileComponent} from "../../../pages/main-gas/profile/profile.component";
 
 @Component({
-  selector: 'app-dialog',
+  selector: 'app-user-dialog',
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.css'
 })

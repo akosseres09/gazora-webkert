@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {DialogComponent} from "../../dialog/dialog/dialog.component";
+import {DialogComponent} from "../../dialog/user-dialog/dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 
 @Injectable({
@@ -9,9 +9,9 @@ export class DialogService {
 
     constructor(private dialog: MatDialog) { }
 
-    openDialog(data: {}) {
-        return this.dialog.open(DialogComponent, {
-            width: 'fill-content',
+    openDialog(data: {}, component: any = DialogComponent) {
+        return this.dialog.open(component, {
+            width: '30%',
             data: data
         });
     }

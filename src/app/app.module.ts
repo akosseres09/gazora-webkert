@@ -19,13 +19,15 @@ import { ProfileComponent } from './pages/main-gas/profile/profile.component';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatCardModule } from "@angular/material/card";
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
-import { DialogComponent } from './shared/dialog/dialog/dialog.component';
+import { DialogComponent } from './shared/dialog/user-dialog/dialog.component';
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MainGasModule} from "./pages/main-gas/main-gas.module";
 import { AddSheetComponent } from './shared/sheet/add-sheet/add-sheet.component';
-import {MatLine} from "@angular/material/core";
+import {MatLine, MatOption} from "@angular/material/core";
+import { MeterDialogComponent } from './shared/dialog/meter-dialog/meter-dialog.component';
+import {MatSelect} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import {MatLine} from "@angular/material/core";
     ProfileComponent,
     DialogComponent,
     AddSheetComponent,
+    MeterDialogComponent,
   ],
     imports: [
         BrowserModule,
@@ -71,6 +74,8 @@ import {MatLine} from "@angular/material/core";
         ReactiveFormsModule,
         MainGasModule,
         MatLine,
+        MatOption,
+        MatSelect,
     ],
   providers: [
     provideAnimationsAsync()
