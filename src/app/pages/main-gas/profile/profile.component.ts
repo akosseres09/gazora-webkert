@@ -1,56 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ADMIN, ROLES, USER, User } from "../../../shared/models/User";
 import { UserService } from "../../../shared/services/user/user.service";
-import { MatDialog } from "@angular/material/dialog";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { DialogComponent } from "../../../shared/dialog/dialog/dialog.component";
-import {MatBottomSheet} from "@angular/material/bottom-sheet";
-import {AddSheetComponent} from "../../../shared/sheet/add-sheet/add-sheet.component";
+import {Subscription} from "rxjs";
+import {SnackbarService} from "../../../shared/services/snackbar/snackbar.service";
+import {DialogService} from "../../../shared/services/dialog/dialog.service";
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit, OnDestroy {
     user?: User
     roles = ROLES;
     userRole?: string;
+    sub?: Subscription;
 
-    constructor(private userService: UserService, private snackBar: MatSnackBar, private dialog: MatDialog, private bottomSheet: MatBottomSheet) {}
+    constructor(private userService: UserService, private snackBar: SnackbarService,
+                private dialog: DialogService) {}
     ngOnInit() {
-        this.userService.findOne(localStorage.getItem('user') as string)
+        this.sub = this.userService.findOne(localStorage.getItem('user') as string)
             .subscribe(user => {
                 this.user = user;
                 this.userRole = this.roles[this.user?.admin ? 'ADMIN' : 'USER'];
             })
     }
 
-    openSnackbar(message: string, panel: Array<string> = []) {
-        this.snackBar.open(message, 'Close', {
-            duration: 3000,
-            panelClass: panel
-        });
-    }
-
     openDialog() {
-        return this.dialog.open(DialogComponent, {
-            width: 'fill-content',
-            data: {
+        this.dialog.openDialog(
+            {
                 dialog: this.dialog,
                 profileComponent: this,
                 user: this.user,
             }
-        });
+        );
     }
 
     toAdmin() {
         if (this.user) {
             this.user.admin = ADMIN;
             this.userService.update(this.user).then(() => {
-                this.openSnackbar('Upgraded To Admin!');
+                this.snackBar.openSnackbar('Upgraded To Admin!');
             }).catch(err => {
-                this.openSnackbar('Failed to Update Profile!', [
+                this.snackBar.openSnackbar('Failed to Update Profile!', [
                     'error'
                 ])
                 console.log(err)
@@ -63,10 +55,10 @@ export class ProfileComponent implements OnInit{
             this.user.admin = USER;
             this.userService.update(this.user)
                 .then(() => {
-                    this.openSnackbar('Demoted to User!');
+                    this.snackBar.openSnackbar('Demoted to User!');
                 })
                 .catch(err => {
-                    this.openSnackbar('Failed To Update Profile!', [
+                    this.snackBar.openSnackbar('Failed To Update Profile!', [
                         'error'
                     ]);
                     console.log(err)
@@ -77,14 +69,16 @@ export class ProfileComponent implements OnInit{
     update(user: User) {
         this.dialog.closeAll();
         this.userService.update(user).then(() => {
-            this.openSnackbar('Updated Profile!', [
-                'error'
-            ]);
+            this.snackBar.openSnackbar('Updated Profile!');
         }).catch(err => {
-            this.openSnackbar('Failed To Update Profile!', [
+            this.snackBar.openSnackbar('Failed To Update Profile!', [
                 'error'
             ])
             console.error(err)
         });
+    }
+
+    ngOnDestroy() {
+        this.sub?.unsubscribe();
     }
 }
