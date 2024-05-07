@@ -4,6 +4,7 @@ import {Address} from "../../../shared/models/Address";
 import {AddressService} from "../../../shared/services/address/address.service";
 import {Location} from "@angular/common";
 import {SnackbarService} from "../../../shared/services/snackbar/snackbar.service";
+import {Timestamp} from "firebase/firestore";
 
 @Component({
   selector: 'app-add-address',
@@ -40,7 +41,7 @@ export class AddAddressComponent {
 
         const address: Address = {
             uid: localStorage.getItem('user') as string,
-            date: Date.now(),
+            date: Timestamp.fromDate(new Date()),
             country: this.form.get('country')?.value as string,
             state: this.form.get('state')?.value as string,
             city: this.form.get('city')?.value as string,

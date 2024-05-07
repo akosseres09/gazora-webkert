@@ -28,6 +28,7 @@ import { AddSheetComponent } from './shared/sheet/add-sheet/add-sheet.component'
 import {MatLine, MatOption} from "@angular/material/core";
 import { MeterDialogComponent } from './shared/dialog/meter-dialog/meter-dialog.component';
 import {MatSelect} from "@angular/material/select";
+import { AddressDialogComponent } from './shared/dialog/address-dialog/address-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {MatSelect} from "@angular/material/select";
     DialogComponent,
     AddSheetComponent,
     MeterDialogComponent,
+    AddressDialogComponent,
   ],
     imports: [
         BrowserModule,

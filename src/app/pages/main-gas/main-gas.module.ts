@@ -11,10 +11,14 @@ import {
 } from "@angular/material/expansion";
 import {MatDivider} from "@angular/material/divider";
 import {MatIcon} from "@angular/material/icon";
+import { MeterListComponent } from './main/meter-list/meter-list.component';
+import { AddressListComponent } from './main/address-list/address-list.component';
 
 @NgModule({
     declarations: [
-        MainComponent
+        MainComponent,
+        MeterListComponent,
+        AddressListComponent
     ],
     exports: [
         MainComponent

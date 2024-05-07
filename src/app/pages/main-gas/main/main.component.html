@@ -1,42 +1,4 @@
-<div class="gas-meter-container">
-    <h1 class="mat-headline-4">Your Meters:</h1>
-    <mat-accordion>
-        <mat-expansion-panel *ngIf="!meters">
-            <mat-expansion-panel-header expandedHeight="100px" collapsedHeight="100px">
-                <div class="loader-container">
-                    <span class="mini-loader"></span>
-                </div>
-            </mat-expansion-panel-header>
-        </mat-expansion-panel>
-        <div *ngIf="meters && meters.length > 0">
-            <mat-expansion-panel *ngFor="let meter of meters" style="margin-bottom: 10px">
-                <mat-expansion-panel-header collapsedHeight="100px" expandedHeight="100px" >
-                    <mat-panel-title>
-                        {{meter.name}}
-                    </mat-panel-title>
-                    <mat-panel-description style="display: flex; align-items: center; gap: 15px">
-                        Current position: <span class="bold">{{meter.currentPosition}} m3</span>
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                <mat-divider></mat-divider>
-                <div class="meter-detail-container">
-                    <div class="data">
-                        <span class="attribute-header">
-                            Registered at:
-                        </span>
-                        <span class="attribute-value">
-                            {{meter.date.toDate().toLocaleString()}}
-                        </span>
-                    </div>
-                    <div class="data icon-holder" *ngIf="meter.id">
-                        <mat-icon (click)="delete(meter.id)">delete</mat-icon>
-                        <mat-icon (click)="openDialog(meter.id)">edit</mat-icon>
-                    </div>
-                </div>
-            </mat-expansion-panel>
-        </div>
-    </mat-accordion>
-    <div class="meter-not-found" *ngIf="(meters && meters.length === 0)">
-        No Result Found!
-    </div>
-</div>
+<app-meter-list [addresses]="addresses" [meters]="meters" [expansionHeight]="expansionHeight"></app-meter-list>
+<app-address-list [addresses]="addresses" [expansionHeight]="expansionHeight"></app-address-list>
+
+

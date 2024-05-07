@@ -10,9 +10,10 @@ export class AddressService {
     constructor(private firestore: AngularFirestore) { }
 
     create(address: Address) {
-        address.id = this.firestore.createId();
+        const id = this.firestore.createId();
+        address.id = id;
         return this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME)
-            .doc().set(address);
+            .doc(id).set(address);
     }
 
     findAllToUid(uid: string) {
@@ -22,9 +23,8 @@ export class AddressService {
     }
 
     findById(id: string) {
-        return this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME,
-            ref => ref.where('id', '==', id)
-            ).valueChanges();
+        return this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME)
+            .doc(id).valueChanges();
     }
 
     findAll() {

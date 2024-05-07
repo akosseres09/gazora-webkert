@@ -1,7 +1,9 @@
+import {Timestamp} from "firebase/firestore";
+
 export interface Address {
     id?: string
     uid: string,
-    date: number
+    date: Timestamp
     country: string,
     state: string
     city: string,

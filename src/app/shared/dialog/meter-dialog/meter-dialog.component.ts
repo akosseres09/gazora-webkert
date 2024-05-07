@@ -1,10 +1,9 @@
 import {Component, Inject} from '@angular/core';
 import {GasMeter} from "../../models/gasMeter";
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
-import {MainGasComponent} from "../../../pages/main-gas/main-gas.component";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Address} from "../../models/Address";
-import {MainComponent} from "../../../pages/main-gas/main/main.component";
+import {MeterListComponent} from "../../../pages/main-gas/main/meter-list/meter-list.component";
 
 @Component({
   selector: 'app-meter-dialog',
@@ -15,7 +14,7 @@ export class MeterDialogComponent {
     meter: GasMeter = this.data.meter;
     dialog: MatDialog = this.data.dialog;
     addresses: Array<Address> = this.data.addresses;
-    component: MainComponent = this.data.component;
+    component: MeterListComponent = this.data.component;
 
     form = new FormGroup({
         address: new FormControl(this.meter.address.id, [
