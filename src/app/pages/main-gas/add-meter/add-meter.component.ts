@@ -7,6 +7,7 @@ import {Subscription} from "rxjs";
 import {Location} from "@angular/common";
 import {SnackbarService} from "../../../shared/services/snackbar/snackbar.service";
 import {GasMeter} from "../../../shared/models/gasMeter";
+import {Timestamp} from "firebase/firestore";
 
 @Component({
   selector: 'app-add-meter',
@@ -51,7 +52,7 @@ export class AddMeterComponent implements OnInit, OnDestroy {
         const gasMeter: GasMeter = {
             name: this.form.get('name')?.value as string,
             uid: localStorage.getItem('user') as string,
-            date: Date.now(),
+            date: Timestamp.fromDate(new Date()),
             address: address[0],
             currentPosition: 0,
             lastPosition: 0

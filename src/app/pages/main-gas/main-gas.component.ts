@@ -8,10 +8,8 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
   styleUrl: './main-gas.component.css'
 })
 export class MainGasComponent implements OnInit{
-    loading: boolean = false;
 
     ngOnInit() {
-        this.loading = true;
     }
 
     constructor(private bottomSheet: MatBottomSheet) {

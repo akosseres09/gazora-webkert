@@ -10,9 +10,11 @@ export class GasMeterService {
     constructor(private fireStore: AngularFirestore) { }
 
     create(gasMeter: GasMeter) {
-        gasMeter.id = this.fireStore.createId();
+        const id: string = this.fireStore.createId()
+        console.log(id);
+        gasMeter.id = id;
         return this.fireStore.collection<GasMeter>(this.GAS_METER_COLLECTION_NAME)
-            .doc().set(gasMeter);
+            .doc(id).set(gasMeter);
     }
 
     findAll(){
@@ -24,5 +26,20 @@ export class GasMeterService {
         return this.fireStore.collection<GasMeter>(this.GAS_METER_COLLECTION_NAME,
             ref => ref.where('address.uid', '==', uid).orderBy('date', 'asc')
             ).valueChanges();
+    }
+
+    findById(id: string) {
+        return this.fireStore.collection<GasMeter>(this.GAS_METER_COLLECTION_NAME)
+            .doc(id).valueChanges();
+    }
+
+    update(meter: GasMeter) {
+        return this.fireStore.collection<GasMeter>(this.GAS_METER_COLLECTION_NAME)
+            .doc(meter.id).update(meter);
+    }
+
+    delete(id: string) {
+        return this.fireStore.collection<GasMeter>(this.GAS_METER_COLLECTION_NAME)
+            .doc(id).delete();
     }
 }
