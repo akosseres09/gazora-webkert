@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Address} from "../../../shared/models/Address";
 import {AddressService} from "../../../shared/services/address/address.service";
 import {Location} from "@angular/common";
+import {SnackbarService} from "../../../shared/services/snackbar/snackbar.service";
 
 @Component({
   selector: 'app-add-address',
@@ -30,7 +31,7 @@ export class AddAddressComponent {
         doorNumber: new FormControl('')
     });
 
-    constructor(private adService: AddressService, private location: Location) {}
+    constructor(private adService: AddressService, private location: Location, private snackBar: SnackbarService) {}
 
     submit() {
         if (!this.form.valid) {
@@ -39,6 +40,7 @@ export class AddAddressComponent {
 
         const address: Address = {
             uid: localStorage.getItem('user') as string,
+            date: Date.now(),
             country: this.form.get('country')?.value as string,
             state: this.form.get('state')?.value as string,
             city: this.form.get('city')?.value as string,
@@ -47,7 +49,14 @@ export class AddAddressComponent {
             floor: this.form.get('floor')?.value as string,
             doorNumber: this.form.get('doorNumber')?.value as string
         };
-        this.adService.create(address);
+        this.adService.create(address).then(() => {
+            this.snackBar.openSnackbar('New Address created!');
+        }).catch(err =>{
+            this.snackBar.openSnackbar('Failed to create new Address!', [
+                'error'
+            ]);
+            console.error(err)
+        });
     }
 
     goBack() {

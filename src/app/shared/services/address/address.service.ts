@@ -7,25 +7,28 @@ import {Address} from "../../models/Address";
 })
 export class AddressService {
     ADDRESS_COLLECTION_NAME = 'Addresses';
-    uid: string = localStorage.getItem('user') as string;
     constructor(private firestore: AngularFirestore) { }
 
     create(address: Address) {
+        address.id = this.firestore.createId();
         return this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME)
             .doc().set(address);
     }
 
     findAllToUid(uid: string) {
-        return this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME)
-            .valueChanges();
+        return this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME,
+            ref => ref.where('uid', '==', uid)
+            ).valueChanges();
+    }
+
+    findById(id: string) {
+        return this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME,
+            ref => ref.where('id', '==', id)
+            ).valueChanges();
     }
 
     findAll() {
         return this.firestore.collection<Address>(this.ADDRESS_COLLECTION_NAME)
             .valueChanges();
-    }
-
-    delete() {
-
     }
 }

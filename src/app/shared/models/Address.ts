@@ -1,5 +1,7 @@
 export interface Address {
+    id?: string
     uid: string,
+    date: number
     country: string,
     state: string
     city: string,
