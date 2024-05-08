@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MainGasRoutingModule } from './main-gas-routing.module';
-import { MainComponent } from './main/main.component';
 import {
     MatAccordion,
     MatExpansionPanel,
@@ -11,20 +10,21 @@ import {
 } from "@angular/material/expansion";
 import {MatDivider} from "@angular/material/divider";
 import {MatIcon} from "@angular/material/icon";
-import { MeterListComponent } from './main/meter-list/meter-list.component';
-import { AddressListComponent } from './main/address-list/address-list.component';
+import { MeterListComponent } from './meter-list/meter-list.component';
+import { AddressListComponent } from './address-list/address-list.component';
 import {TimestampPipe} from "../../shared/pipe/timestamp.pipe";
+import {MatFabButton} from "@angular/material/button";
 
 @NgModule({
     declarations: [
-        MainComponent,
         MeterListComponent,
         AddressListComponent,
         TimestampPipe
     ],
     exports: [
-        MainComponent,
-        TimestampPipe
+        TimestampPipe,
+        MeterListComponent,
+        AddressListComponent
     ],
     imports: [
         CommonModule,
@@ -36,6 +36,7 @@ import {TimestampPipe} from "../../shared/pipe/timestamp.pipe";
         MatExpansionPanelTitle,
         MatDivider,
         MatIcon,
+        MatFabButton,
     ]
 })
 export class MainGasModule { }

@@ -1,10 +1,10 @@
 import {Component, Input} from '@angular/core';
-import {GasMeter} from "../../../../shared/models/gasMeter";
-import {GasMeterService} from "../../../../shared/services/gasMeter/gas-meter.service";
-import {SnackbarService} from "../../../../shared/services/snackbar/snackbar.service";
-import {DialogService} from "../../../../shared/services/dialog/dialog.service";
-import {MeterDialogComponent} from "../../../../shared/dialog/meter-dialog/meter-dialog.component";
-import {Address} from "../../../../shared/models/Address";
+import {GasMeter} from "../../../shared/models/gasMeter";
+import {GasMeterService} from "../../../shared/services/gasMeter/gas-meter.service";
+import {SnackbarService} from "../../../shared/services/snackbar/snackbar.service";
+import {DialogService} from "../../../shared/services/dialog/dialog.service";
+import {MeterDialogComponent} from "../../../shared/dialog/meter-dialog/meter-dialog.component";
+import {Address} from "../../../shared/models/Address";
 
 @Component({
   selector: 'app-meter-list',

@@ -3,7 +3,7 @@ import {GasMeter} from "../../models/gasMeter";
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Address} from "../../models/Address";
-import {MeterListComponent} from "../../../pages/main-gas/main/meter-list/meter-list.component";
+import {MeterListComponent} from "../../../pages/main-gas/meter-list/meter-list.component";
 
 @Component({
   selector: 'app-meter-dialog',

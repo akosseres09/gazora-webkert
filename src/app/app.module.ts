@@ -28,8 +28,8 @@ import { MatLine, MatOption } from "@angular/material/core";
 import { MeterDialogComponent } from './shared/dialog/meter-dialog/meter-dialog.component';
 import { MatSelect } from "@angular/material/select";
 import { AddressDialogComponent } from './shared/dialog/address-dialog/address-dialog.component';
+import { environment } from "../environments/environment";
 import { MainGasModule } from "./pages/main-gas/main-gas.module";
-import {environment} from "../environments/environment";
 
 @NgModule({
     declarations: [
@@ -67,10 +67,10 @@ import {environment} from "../environments/environment";
         MatInput,
         FormsModule,
         ReactiveFormsModule,
-        MainGasModule,
         MatLine,
         MatOption,
         MatSelect,
+        MainGasModule,
     ],
     providers: [
         provideAnimationsAsync()

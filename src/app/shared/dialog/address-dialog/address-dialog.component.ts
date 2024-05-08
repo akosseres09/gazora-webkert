@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {Address} from "../../models/Address";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AddressListComponent} from "../../../pages/main-gas/main/address-list/address-list.component";
+import {AddressListComponent} from "../../../pages/main-gas/address-list/address-list.component";
 
 @Component({
   selector: 'app-address-dialog',
