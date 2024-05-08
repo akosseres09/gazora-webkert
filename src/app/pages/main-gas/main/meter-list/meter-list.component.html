@@ -30,7 +30,7 @@
                             Registered at:
                         </span>
                         <span class="attribute-value">
-                            {{meter.date.toDate().toLocaleString()}}
+                            {{ meter.date | timestamp }}
                         </span>
                     </div>
                     <div class="data icon-holder" *ngIf="meter.id">

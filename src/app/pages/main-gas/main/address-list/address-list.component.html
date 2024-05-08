@@ -27,7 +27,7 @@
                             Registered at:
                         </span>
                         <span class="attribute-value">
-                            {{address.date.toDate().toLocaleString()}}
+                            {{ address.date | timestamp}}
                         </span>
                     </div>
                     <div class="data icon-holder" *ngIf="address.id">
