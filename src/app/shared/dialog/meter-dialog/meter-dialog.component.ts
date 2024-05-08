@@ -4,6 +4,7 @@ import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Address} from "../../models/Address";
 import {MeterListComponent} from "../../../pages/main-gas/meter-list/meter-list.component";
+import {gasMeterValidator} from "../../validators/gasMeterValidator";
 
 @Component({
   selector: 'app-meter-dialog',
@@ -26,7 +27,9 @@ export class MeterDialogComponent {
         name: new FormControl(this.meter.name, [
             Validators.required
         ])
-    })
+    }, [
+        gasMeterValidator('currentPosition', this.meter.lastPosition ?? 0)
+    ]);
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
