@@ -38,6 +38,30 @@
                         <mat-icon (click)="openDialog(meter.id)">edit</mat-icon>
                     </div>
                 </div>
+                <div class="meter-detail-container">
+                    <div class="current-position">
+                        <div class="data">
+                        <span class="attribute-header">
+                            Current Position:
+                        </span>
+                            <span class="attribute-value">
+                            {{ meter.currentPosition }}
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="meter-detail-container">
+                    <div class="">
+                        <div class="data">
+                            <span class="attribute-header">
+                                Last Position:
+                            </span>
+                            <span class="attribute-value">
+                                {{ meter.lastPosition }} m3
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </mat-expansion-panel>
         </div>
     </mat-accordion>

@@ -54,6 +54,10 @@ mat-expansion-panel-header mat-panel-description {
     text-decoration: underline;
 }
 
+.current-position {
+    display: none;
+}
+
 @media screen and (max-width: 772px) {
     .gas-meter-container {
         width: 100%;
@@ -63,6 +67,10 @@ mat-expansion-panel-header mat-panel-description {
 @media screen and (max-width: 480px) {
     mat-panel-description {
         display: none !important;
+    }
+
+    .current-position {
+        display: flex;
     }
 }
 

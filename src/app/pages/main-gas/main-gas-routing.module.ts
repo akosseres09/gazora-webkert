@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {MainGasComponent} from "./main-gas.component";
+import { MainGasComponent } from "./main-gas.component";
 
 
 const routes: Routes = [
