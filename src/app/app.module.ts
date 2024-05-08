@@ -18,29 +18,29 @@ import { SidenavComponent } from './shared/sidenav/sidenav.component';
 import { ProfileComponent } from './pages/main-gas/profile/profile.component';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatCardModule } from "@angular/material/card";
-import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from "@angular/material/dialog";
 import { DialogComponent } from './shared/dialog/user-dialog/dialog.component';
-import {MatFormField, MatLabel} from "@angular/material/form-field";
-import {MatInput} from "@angular/material/input";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MainGasModule} from "./pages/main-gas/main-gas.module";
+import { MatFormField, MatLabel } from "@angular/material/form-field";
+import { MatInput } from "@angular/material/input";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AddSheetComponent } from './shared/sheet/add-sheet/add-sheet.component';
-import {MatLine, MatOption} from "@angular/material/core";
+import { MatLine, MatOption } from "@angular/material/core";
 import { MeterDialogComponent } from './shared/dialog/meter-dialog/meter-dialog.component';
-import {MatSelect} from "@angular/material/select";
+import { MatSelect } from "@angular/material/select";
 import { AddressDialogComponent } from './shared/dialog/address-dialog/address-dialog.component';
+import { MainGasModule } from "./pages/main-gas/main-gas.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainGasComponent,
-    SidenavComponent,
-    ProfileComponent,
-    DialogComponent,
-    AddSheetComponent,
-    MeterDialogComponent,
-    AddressDialogComponent,
-  ],
+    declarations: [
+        AppComponent,
+        MainGasComponent,
+        SidenavComponent,
+        ProfileComponent,
+        DialogComponent,
+        AddSheetComponent,
+        MeterDialogComponent,
+        AddressDialogComponent,
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -79,9 +79,9 @@ import { AddressDialogComponent } from './shared/dialog/address-dialog/address-d
         MatOption,
         MatSelect,
     ],
-  providers: [
-    provideAnimationsAsync()
-  ],
-  bootstrap: [AppComponent]
+    providers: [
+        provideAnimationsAsync()
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

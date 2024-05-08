@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {MainGasComponent} from "./main-gas.component";
-import {redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 
-const redirectUnauthorized = () => redirectUnauthorizedTo('/');
 
 const routes: Routes = [
     {
         path: '',
-        component: MainGasComponent
+        loadChildren: () => import('./main/main.module').then(m => m.MainModule)
     },
     {
         path: 'profile',

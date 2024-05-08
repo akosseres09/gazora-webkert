@@ -13,15 +13,18 @@ import {MatDivider} from "@angular/material/divider";
 import {MatIcon} from "@angular/material/icon";
 import { MeterListComponent } from './main/meter-list/meter-list.component';
 import { AddressListComponent } from './main/address-list/address-list.component';
+import {TimestampPipe} from "../../shared/pipe/timestamp.pipe";
 
 @NgModule({
     declarations: [
         MainComponent,
         MeterListComponent,
-        AddressListComponent
+        AddressListComponent,
+        TimestampPipe
     ],
     exports: [
-        MainComponent
+        MainComponent,
+        TimestampPipe
     ],
     imports: [
         CommonModule,
@@ -32,7 +35,7 @@ import { AddressListComponent } from './main/address-list/address-list.component
         MatExpansionPanelDescription,
         MatExpansionPanelTitle,
         MatDivider,
-        MatIcon
+        MatIcon,
     ]
 })
 export class MainGasModule { }
