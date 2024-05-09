@@ -1,15 +1,14 @@
-import {Component, OnDestroy} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "../../shared/services/auth/auth.service";
-import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnDestroy{
+export class LoginComponent {
     loginForm = new FormGroup({
         email: new FormControl('', [
             Validators.required,
@@ -21,7 +20,6 @@ export class LoginComponent implements OnDestroy{
         ])
     });
 
-    loginSubscription?: Subscription;
     loading: boolean = false;
 
     constructor(private router: Router, private auth: AuthService) {}
@@ -45,9 +43,5 @@ export class LoginComponent implements OnDestroy{
                 console.error(err.message);
                 this.loading = false;
             });
-    }
-
-    ngOnDestroy() {
-        this.loginSubscription?.unsubscribe();
     }
 }
