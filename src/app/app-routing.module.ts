@@ -25,6 +25,14 @@ const routes: Routes = [
             authGuardPipe: redirectUnauthorized
         }
     },
+    {
+        path: 'not-found',
+        loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule)
+    },
+    {
+        path: '**',
+        redirectTo: '/not-found'
+    }
 ];
 
 @NgModule({
