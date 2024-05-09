@@ -3,8 +3,8 @@ import {BillingInfo} from "../../../shared/models/BillingInfo";
 import {BillingService} from "../../../shared/services/billing/billing.service";
 import {SnackbarService} from "../../../shared/services/snackbar/snackbar.service";
 import {DialogService} from "../../../shared/services/dialog/dialog.service";
-import {MeterDialogComponent} from "../../../shared/dialog/meter-dialog/meter-dialog.component";
 import {Address} from "../../../shared/models/Address";
+import {BillingDialogComponent} from "../../../shared/dialog/billing-dialog/billing-dialog.component";
 
 @Component({
   selector: 'app-billing-list',
@@ -24,14 +24,32 @@ export class BillingListComponent {
             return;
         }
         this.dialog.openDialog({
-            meter: billing[0],
+            billing: billing[0],
             dialog: this.dialog,
-            addresses: this.billings,
+            addresses: this.addresses,
             component: this
-        }, MeterDialogComponent)
+        }, BillingDialogComponent)
+    }
+
+    edit(billing: BillingInfo) {
+        this.billingService.update(billing).then(() => {
+            this.snackBar.openSnackbar('Billing Info updated!');
+        }).catch(err => {
+            console.error(err);
+            this.snackBar.openSnackbar('Failed to Update Billing Info!', [
+                'error'
+            ]);
+        });
     }
 
     delete(id: string) {
-
+        this.billingService.delete(id).then(() => {
+            this.snackBar.openSnackbar('Billing Info Deleted!');
+        }).catch(err => {
+            console.error(err);
+            this.snackBar.openSnackbar('Failed to Delete Billing Info!', [
+                'error'
+            ]);
+        });
     }
 }

@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <mat-dialog-content>
+        <div class="form-container">
+            <h1>Update Billing Info</h1>
+            <div class="form-group">
+                <mat-form-field >
+                    <mat-label for="address">Address:</mat-label>
+                    <mat-select id="address" formControlName="address">
+                        <mat-option *ngFor="let address of addresses" [value]="address.id">
+                            {{address.city}} {{address.street}} {{address.houseNumber}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="button-holder">
+            <button type="button" mat-flat-button color="warn" (click)="dialog.closeAll()">CLOSE</button>
+            <button mat-flat-button type="submit" color="primary">ADD</button>
+        </div>
+    </mat-dialog-actions>
+</form>
+
+
+

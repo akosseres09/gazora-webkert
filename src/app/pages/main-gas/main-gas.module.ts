@@ -21,6 +21,7 @@ import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatOption, MatSelect } from "@angular/material/select";
 import { MatInput } from "@angular/material/input";
 import { BillingListComponent } from './billing-list/billing-list.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
     declarations: [
@@ -55,7 +56,8 @@ import { BillingListComponent } from './billing-list/billing-list.component';
         MatOption,
         MatLabel,
         MatButton,
-        MatInput
+        MatInput,
+        MatDialogModule
     ]
 })
 export class MainGasModule { }

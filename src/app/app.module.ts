@@ -18,7 +18,13 @@ import { SidenavComponent } from './shared/sidenav/sidenav.component';
 import { ProfileComponent } from './pages/main-gas/profile/profile.component';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatCardModule } from "@angular/material/card";
-import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from "@angular/material/dialog";
+import {
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogContainer,
+    MatDialogContent,
+    MatDialogTitle
+} from "@angular/material/dialog";
 import { DialogComponent } from './shared/dialog/user-dialog/dialog.component';
 import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatInput } from "@angular/material/input";
@@ -30,6 +36,8 @@ import { MatSelect } from "@angular/material/select";
 import { AddressDialogComponent } from './shared/dialog/address-dialog/address-dialog.component';
 import { environment } from "../environments/environment";
 import { MainGasModule } from "./pages/main-gas/main-gas.module";
+import { BillingDialogComponent } from './shared/dialog/billing-dialog/billing-dialog.component';
+import {MatSlideToggle} from "@angular/material/slide-toggle";
 
 @NgModule({
     declarations: [
@@ -41,6 +49,7 @@ import { MainGasModule } from "./pages/main-gas/main-gas.module";
         AddSheetComponent,
         MeterDialogComponent,
         AddressDialogComponent,
+        BillingDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -71,6 +80,8 @@ import { MainGasModule } from "./pages/main-gas/main-gas.module";
         MatOption,
         MatSelect,
         MainGasModule,
+        MatSlideToggle,
+        MatDialogContainer,
     ],
     providers: [
         provideAnimationsAsync()
