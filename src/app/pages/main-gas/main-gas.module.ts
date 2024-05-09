@@ -13,18 +13,25 @@ import {MatIcon} from "@angular/material/icon";
 import { MeterListComponent } from './meter-list/meter-list.component';
 import { AddressListComponent } from './address-list/address-list.component';
 import {TimestampPipe} from "../../shared/pipe/timestamp.pipe";
-import {MatFabButton} from "@angular/material/button";
+import { MatButton, MatFabButton } from "@angular/material/button";
+import { AddBillingInfoComponent } from './add-billing-info/add-billing-info.component';
+import { MatSlideToggle } from "@angular/material/slide-toggle";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatFormField, MatLabel } from "@angular/material/form-field";
+import { MatOption, MatSelect } from "@angular/material/select";
+import { MatInput } from "@angular/material/input";
 
 @NgModule({
     declarations: [
         MeterListComponent,
         AddressListComponent,
-        TimestampPipe
+        TimestampPipe,
+        AddBillingInfoComponent
     ],
     exports: [
         TimestampPipe,
         MeterListComponent,
-        AddressListComponent
+        AddressListComponent,
     ],
     imports: [
         CommonModule,
@@ -37,6 +44,15 @@ import {MatFabButton} from "@angular/material/button";
         MatDivider,
         MatIcon,
         MatFabButton,
+        MatSlideToggle,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatSelect,
+        MatOption,
+        MatLabel,
+        MatButton,
+        MatInput
     ]
 })
 export class MainGasModule { }
