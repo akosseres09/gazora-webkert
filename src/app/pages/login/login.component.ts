@@ -37,8 +37,7 @@ export class LoginComponent implements OnDestroy{
         }
 
          this.auth.login(email?.value as string, password?.value as string)
-            .then(cred  => {
-                console.log(cred);
+            .then(_  => {
                 this.loading = false;
                 this.router.navigateByUrl('/main');
             })

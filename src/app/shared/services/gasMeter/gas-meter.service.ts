@@ -11,7 +11,6 @@ export class GasMeterService {
 
     create(gasMeter: GasMeter) {
         const id: string = this.fireStore.createId()
-        console.log(id);
         gasMeter.id = id;
         return this.fireStore.collection<GasMeter>(this.GAS_METER_COLLECTION_NAME)
             .doc(id).set(gasMeter);

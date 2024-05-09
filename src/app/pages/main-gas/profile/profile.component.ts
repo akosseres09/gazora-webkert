@@ -45,7 +45,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
                 this.snackBar.openSnackbar('Failed to Update Profile!', [
                     'error'
                 ])
-                console.log(err)
+                console.error(err)
             });
         }
     }
@@ -61,7 +61,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
                     this.snackBar.openSnackbar('Failed To Update Profile!', [
                         'error'
                     ]);
-                    console.log(err)
+                    console.error(err)
                 });
         }
     }
