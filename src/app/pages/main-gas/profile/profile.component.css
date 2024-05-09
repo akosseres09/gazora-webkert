@@ -27,7 +27,6 @@ span.mini-loader {
     padding-bottom: 15px;
 }
 
-
 .sub-user-info {
     display: flex;
     justify-content: space-between;
@@ -97,5 +96,22 @@ mat-card-content {
 
     mat-card {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .sub-user-info .email {
+        align-items: start;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 290px) {
+    .sub-user-info div {
+        margin-top: 10px;
+        align-items: start;
+        display: flex;
+        flex-direction: column;
     }
 }
