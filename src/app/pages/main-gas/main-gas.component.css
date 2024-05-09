@@ -7,11 +7,11 @@ mat-sidenav {
 }
 
 .main-container {
-    position: relative;
+    position: absolute;
 }
 
 .add-button {
-    position: absolute;
+    position: fixed;
     bottom: 5%;
     right: 3%;
 }

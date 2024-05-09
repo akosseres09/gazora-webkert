@@ -1,0 +1,59 @@
+<div class="billing-container">
+    <h1 class="mat-headline-4">Your Meters:</h1>
+    <mat-accordion>
+        <mat-expansion-panel #panel class="meter-not-found" hideToggle="true" (opened)="panel.close()"  *ngIf="(billings && billings.length === 0)">
+            <mat-expansion-panel-header expandedHeight="{{expansionHeight}}" collapsedHeight="{{expansionHeight}}" >
+                No Result Found!
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <mat-expansion-panel #loadPanel *ngIf="!billings" (opened)="loadPanel.close()">
+            <mat-expansion-panel-header expandedHeight="{{expansionHeight}}" collapsedHeight="{{expansionHeight}}">
+                <div class="loader-container">
+                    <span class="mini-loader"></span>
+                </div>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <div *ngIf="billings && billings.length > 0">
+            <mat-expansion-panel *ngFor="let billing of billings" style="margin-bottom: 10px">
+                <mat-expansion-panel-header collapsedHeight="{{expansionHeight}}" expandedHeight="{{expansionHeight}}" >
+                    <mat-panel-title>
+                        {{billing.address.city}}, {{billing.address.street}} {{billing.address.houseNumber}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-divider></mat-divider>
+                <div class="billing-detail-container">
+                    <div class="data">
+                        <span class="attribute-header">
+                            Registered at:
+                        </span>
+                        <span class="attribute-value">
+                            {{ billing.address.date | timestamp}}
+                        </span>
+                    </div>
+
+                    <div class="data icon-holder" *ngIf="billing.id">
+                        <mat-icon (click)="delete(billing.id)">delete</mat-icon>
+                        <mat-icon (click)="openDialog(billing.id)">edit</mat-icon>
+                    </div>
+                </div>
+                <div class="billing-detail-container">
+                    <div class="data">
+                        <span class="attribute-value">
+                            Full Address:
+                            {{ billing.address.country }}
+                            {{ billing.address.state }}
+                            {{ billing.address.city }}
+                            {{ billing.address.street }}
+                            {{ billing.address.houseNumber }}
+                            <br>
+                            <span [ngStyle]="billing.address.floor && billing.address.doorNumber ? {'display': 'flex'} : {'display': 'none'}">
+                                floor: {{ billing.address.floor }}
+                                door: {{ billing.address.doorNumber }}
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </div>
+    </mat-accordion>
+</div>

@@ -83,3 +83,107 @@ body {
         transform: rotate(360deg);
     }
 }
+
+.gas-meter-container, .address-container, .billing-container {
+    width: 75%;
+    margin: 30px auto;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.gas-meter-container mat-expansion-panel-header,
+.address-container mat-expansion-panel-header,
+.billing-container mat-expansion-panel-header{
+    font-size: 26px;
+}
+
+.gas-meter-container mat-expansion-panel-header mat-panel-description,
+.address-container mat-expansion-panel-header mat-panel-description,
+.billing-container mat-expansion-panel-header mat-panel-description {
+    font-size: 20px;
+}
+
+.gas-meter-container mat-expansion-panel-header > span,
+.address-container mat-expansion-panel-header > span,
+.billing-container mat-expansion-panel-header > span {
+    height: 100%;
+}
+
+.gas-meter-container mat-expansion-panel-header > span.mat-expansion-indicator ,
+.address-container mat-expansion-panel-header > span.mat-expansion-indicator ,
+.billing-container mat-expansion-panel-header > span.mat-expansion-indicator  {
+    height: unset;
+}
+
+.mat-headline-4 {
+    margin-bottom: 15px !important;
+}
+
+.loader-container {
+    margin: 0 auto;
+}
+
+.meter-detail-container, .address-detail-container, .billing-detail-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.meter-detail-container .data,
+.address-detail-container .data,
+.billing-detail-container .data {
+    font-size: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.meter-detail-container .data:not(.icon-holder),
+.address-detail-container .data:not(.icon-holder),
+.billing-detail-container .data:not(.icon-holder) {
+    flex-direction: column;
+}
+
+.meter-detail-container .data.icon-holder,
+.address-detail-container .data.icon-holder,
+.billing-detail-container .data.icon-holder {
+    align-items: center;
+}
+
+.meter-detail-container .data .attribute-header,
+.address-detail-container .data .attribute-header,
+.billing-detail-container .data .attribute-header {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.current-position {
+    display: none;
+}
+
+@media screen and (max-width: 772px) {
+    .gas-meter-container, .address-container, .billing-container  {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .gas-meter-container mat-expansion-panel-header mat-panel-description,
+    .address-container mat-expansion-panel-header mat-panel-description,
+    .billing-container mat-expansion-panel-header mat-panel-description {
+        display: none !important;
+    }
+
+    .current-position {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 380px){
+    .meter-detail-container,
+    .address-detail-container,
+    .billing-detail-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+

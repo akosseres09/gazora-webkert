@@ -6,6 +6,8 @@ import {GasMeterService} from "../../shared/services/gasMeter/gas-meter.service"
 import {AddressService} from "../../shared/services/address/address.service";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {AddSheetComponent} from "../../shared/sheet/add-sheet/add-sheet.component";
+import {BillingInfo} from "../../shared/models/BillingInfo";
+import {BillingService} from "../../shared/services/billing/billing.service";
 
 @Component({
   selector: 'app-main-gas',
@@ -16,9 +18,12 @@ export class MainGasComponent implements OnInit, OnDestroy {
     expansionHeight = '80px';
     meters?: Array<GasMeter>;
     addresses?: Array<Address>;
+    billings?: Array<BillingInfo>;
     meterSub?: Subscription;
     adSub?: Subscription;
-    constructor(private meterService: GasMeterService, private adService: AddressService, private bottomSheet: MatBottomSheet) {}
+    billingSub?: Subscription;
+    constructor(private meterService: GasMeterService, private adService: AddressService,
+                private bottomSheet: MatBottomSheet, private billingService: BillingService) {}
 
     ngOnInit() {
         const uid = localStorage.getItem('user') as string;
@@ -28,6 +33,9 @@ export class MainGasComponent implements OnInit, OnDestroy {
         this.adSub = this.adService.findAllToUid(uid).subscribe(addresses => {
             this.addresses = addresses;
         });
+        this.billingSub = this.billingService.getAllToUser(uid).subscribe(billings => {
+            this.billings = billings;
+        })
     }
 
     openBottomSheet() {
@@ -37,5 +45,6 @@ export class MainGasComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.meterSub?.unsubscribe();
         this.adSub?.unsubscribe();
+        this.billingSub?.unsubscribe();
     }
 }

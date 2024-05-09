@@ -20,18 +20,21 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatOption, MatSelect } from "@angular/material/select";
 import { MatInput } from "@angular/material/input";
+import { BillingListComponent } from './billing-list/billing-list.component';
 
 @NgModule({
     declarations: [
         MeterListComponent,
         AddressListComponent,
         TimestampPipe,
-        AddBillingInfoComponent
+        AddBillingInfoComponent,
+        BillingListComponent
     ],
     exports: [
         TimestampPipe,
         MeterListComponent,
         AddressListComponent,
+        BillingListComponent,
     ],
     imports: [
         CommonModule,
