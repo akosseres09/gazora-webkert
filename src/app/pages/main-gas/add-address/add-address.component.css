@@ -34,13 +34,24 @@
 
 @media screen and (max-width: 600px) {
     .form-container {
-        width: 75%;
+        width: 100%;
+        padding: 20px ;
     }
 }
 
 @media screen and (max-width: 380px) {
-    .form-container {
+    .button-holder {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button-holder button {
+        flex: unset;
         width: 100%;
-        padding: 20px ;
+    }
+
+    .form-container .form-group-container {
+        flex-direction: column;
+        gap: unset;
     }
 }
