@@ -1,5 +1,5 @@
 <div class="address-container">
-    <h1 class="mat-headline-4">Your Addresses:</h1>
+    <h1 class="mat-headline-4">Addresses</h1>
     <mat-accordion>
         <mat-expansion-panel #addressPanel class="address-not-found" hideToggle="true" (opened)="addressPanel.close()"  *ngIf="(addresses && addresses.length === 0)">
             <mat-expansion-panel-header expandedHeight="{{expansionHeight}}" collapsedHeight="{{expansionHeight}}">
@@ -21,34 +21,43 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-divider></mat-divider>
-                <div class="address-detail-container">
-                    <div class="data">
+                <div class="container">
+                    <div class="address-data-container">
+                        <div class="address-detail-container">
+                            <div class="data">
                         <span class="attribute-header">
                             Registered at:
                         </span>
-                        <span class="attribute-value">
+                                <span class="attribute-value">
                             {{ address.date | timestamp}}
                         </span>
-                    </div>
-
-                    <div class="data icon-holder" *ngIf="address.id">
-                        <mat-icon (click)="openDialog(address.id)">edit</mat-icon>
-                    </div>
-                </div>
-                <div class="address-detail-container">
-                    <div class="data">
-                        <span class="attribute-value">
-                            {{ address.country }}
-                            {{ address.state }}
-                            {{ address.city }}
-                            {{ address.street }}
-                            {{ address.houseNumber }}
-                            <br>
-                            <span [ngStyle]="address.floor && address.doorNumber ? {'display': 'flex'} : {'display': 'none'}">
-                                floor: {{ address.floor }}
-                                door: {{ address.doorNumber }}
+                            </div>
+                        </div>
+                        <div class="address-detail-container">
+                            <div class="data">
+                                <div class="attribute-header">
+                                    Full Address:
+                                </div>
+                                <span class="attribute-value">
+                            <div class="holder">
+                                <span>{{ address.country }}, </span>
+                                <span>{{ address.state }}, </span>
+                                <span>{{ address.city }}</span>
+                            </div>
+                             <div class="holder">
+                                 <span>{{ address.street }}</span>
+                                 <span>{{ address.houseNumber }}</span>
+                             </div>
+                            <span class="holder">
+                                <span *ngIf="address.floor">Floor {{ address.floor }} </span>
+                                <span *ngIf="address.doorNumber">Door {{ address.doorNumber }}</span>
                             </span>
                         </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data icon-holder" *ngIf="address.id">
+                        <mat-icon (click)="openDialog(address.id)">edit</mat-icon>
                     </div>
                 </div>
             </mat-expansion-panel>

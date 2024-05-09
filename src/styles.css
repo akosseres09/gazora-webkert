@@ -25,7 +25,6 @@ app-root > * {
     flex: 1 1 100%;
 }
 
-
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -55,7 +54,6 @@ body {
     height: 100%;
     background-color: rgba(0,0,0, 0.3);
 }
-
 
 .mini-loader {
     width: 48px;
@@ -107,12 +105,20 @@ body {
 .address-container mat-expansion-panel-header > span,
 .billing-container mat-expansion-panel-header > span {
     height: 100%;
+    align-items: center;
 }
 
 .gas-meter-container mat-expansion-panel-header > span.mat-expansion-indicator ,
 .address-container mat-expansion-panel-header > span.mat-expansion-indicator ,
 .billing-container mat-expansion-panel-header > span.mat-expansion-indicator  {
     height: unset;
+}
+
+mat-expansion-panel-header mat-panel-title {
+    height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .mat-headline-4 {
@@ -137,12 +143,6 @@ body {
     gap: 15px;
 }
 
-.meter-detail-container .data:not(.icon-holder),
-.address-detail-container .data:not(.icon-holder),
-.billing-detail-container .data:not(.icon-holder) {
-    flex-direction: column;
-}
-
 .meter-detail-container .data.icon-holder,
 .address-detail-container .data.icon-holder,
 .billing-detail-container .data.icon-holder {
@@ -156,6 +156,30 @@ body {
     text-decoration: underline;
 }
 
+.billing-detail-container .attribute-value {
+    display: flex;
+    flex-direction: column;
+}
+
+.attribute-value .holder {
+    padding-top: 5px;
+}
+
+.icon-holder {
+    display: flex;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+}
+
+.container .icon-holder {
+    margin-left: auto;
+    align-self: center;
+}
+
 .current-position {
     display: none;
 }
@@ -166,7 +190,28 @@ body {
     }
 }
 
+@media screen and (max-width: 575px) {
+    .billing-detail-container .data,
+    .address-detail-container .data,
+    .meter-detail-container .data {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .meter-detail-container, .address-detail-container, .billing-detail-container {
+        position: unset;
+    }
+    .icon-holder {
+        position: unset;
+        right: unset;
+    }
+}
+
 @media screen and (max-width: 480px) {
+    .icon-holder {
+        flex-direction: column;
+    }
     .gas-meter-container mat-expansion-panel-header mat-panel-description,
     .address-container mat-expansion-panel-header mat-panel-description,
     .billing-container mat-expansion-panel-header mat-panel-description {
@@ -178,12 +223,16 @@ body {
     }
 }
 
-@media screen and (max-width: 380px){
-    .meter-detail-container,
-    .address-detail-container,
-    .billing-detail-container {
+@media screen and (max-width: 390px) {
+    .container {
         flex-direction: column;
-        gap: 20px;
+    }
+
+    .container .icon-holder {
+        margin-top: 30px;
+        align-self: start;
+        margin-left: 0;
+        flex-direction: row;
     }
 }
 

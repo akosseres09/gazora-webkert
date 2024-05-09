@@ -1,9 +1,11 @@
 <div class="gas-meter-container">
-    <h1 class="mat-headline-4">Your Meters:</h1>
+    <h1 class="mat-headline-4">Meters</h1>
     <mat-accordion>
         <mat-expansion-panel #panel class="meter-not-found" hideToggle="true" (opened)="panel.close()"  *ngIf="(meters && meters.length === 0)">
             <mat-expansion-panel-header expandedHeight="{{expansionHeight}}" collapsedHeight="{{expansionHeight}}" >
-                No Result Found!
+                <mat-panel-title>
+                    No Result Found!
+                </mat-panel-title>
             </mat-expansion-panel-header>
         </mat-expansion-panel>
         <mat-expansion-panel *ngIf="!meters">
@@ -24,42 +26,44 @@
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <mat-divider></mat-divider>
-                <div class="meter-detail-container">
-                    <div class="data">
+                <div class="container">
+                    <div class="meter-data-container">
+                        <div class="meter-detail-container">
+                            <div class="data">
                         <span class="attribute-header">
                             Registered at:
                         </span>
-                        <span class="attribute-value">
+                                <span class="attribute-value">
                             {{ meter.date | timestamp }}
                         </span>
-                    </div>
-                    <div class="data icon-holder" *ngIf="meter.id">
-                        <mat-icon (click)="delete(meter.id)">delete</mat-icon>
-                        <mat-icon (click)="openDialog(meter.id)">edit</mat-icon>
-                    </div>
-                </div>
-                <div class="meter-detail-container">
-                    <div class="current-position">
-                        <div class="data">
+                            </div>
+                        </div>
+                        <div class="meter-detail-container">
+                            <div class="current-position">
+                                <div class="data">
                         <span class="attribute-header">
                             Current Position:
                         </span>
-                            <span class="attribute-value">
-                            {{ meter.currentPosition }}
+                                    <span class="attribute-value">
+                            {{ meter.currentPosition }} m3
                         </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="meter-detail-container">
+                            <div class="data">
+                        <span class="attribute-header">
+                            Last Position:
+                        </span>
+                                <span class="attribute-value">
+                            {{ meter.lastPosition }} m3
+                        </span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="meter-detail-container">
-                    <div class="">
-                        <div class="data">
-                            <span class="attribute-header">
-                                Last Position:
-                            </span>
-                            <span class="attribute-value">
-                                {{ meter.lastPosition }} m3
-                            </span>
-                        </div>
+                    <div class="icon-holder" *ngIf="meter.id">
+                        <mat-icon (click)="delete(meter.id)">delete</mat-icon>
+                        <mat-icon (click)="openDialog(meter.id)">edit</mat-icon>
                     </div>
                 </div>
             </mat-expansion-panel>
