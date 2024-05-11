@@ -184,9 +184,39 @@ mat-expansion-panel-header mat-panel-title {
     display: none;
 }
 
+.dialog-panel {
+    width: 60%;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    gap: 15px;
+}
+
+.form-group > mat-form-field {
+    width: 100%;
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: center !important;
+}
+
+mat-dialog-actions button {
+    width: 40%;
+}
+
 @media screen and (max-width: 772px) {
     .gas-meter-container, .address-container, .billing-container  {
         width: 100%;
+    }
+    .dialog-panel {
+        width: 75%;
     }
 }
 
@@ -195,6 +225,10 @@ mat-expansion-panel-header mat-panel-title {
     .address-detail-container .data,
     .meter-detail-container .data {
         flex-direction: column;
+    }
+
+    .dialog-panel {
+        width: 100%;
     }
 }
 
@@ -221,11 +255,26 @@ mat-expansion-panel-header mat-panel-title {
     .current-position {
         display: flex;
     }
+
+    .form-group {
+        flex-direction: column;
+        gap: unset;
+    }
 }
 
 @media screen and (max-width: 390px) {
     .container {
         flex-direction: column;
+    }
+
+    mat-dialog-actions {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    mat-dialog-actions button {
+        width: 100%;
+        margin-left: 0 !important;
     }
 
     .container .icon-holder {

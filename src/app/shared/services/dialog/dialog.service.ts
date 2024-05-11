@@ -11,7 +11,7 @@ export class DialogService {
 
     openDialog(data: {}, component: any = DialogComponent) {
         return this.dialog.open(component, {
-            width: '30%',
+            panelClass: 'dialog-panel',
             data: data
         });
     }
